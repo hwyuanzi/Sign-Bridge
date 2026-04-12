@@ -96,11 +96,11 @@ def extract_pose_landmarks_to_csv(
     Each CSV row represents one landmark for one frame.
     Returns: (frames_processed, rows_written).
     """
-    capture = cv2.VideoCapture(str(video_path))  # pylint: disable=no-member
+    capture = cv2.VideoCapture(str(video_path))
     if not capture.isOpened():
         raise FileNotFoundError(f"Unable to open video file: {video_path}")
 
-    fps = capture.get(cv2.CAP_PROP_FPS)  # pylint: disable=no-member
+    fps = capture.get(cv2.CAP_PROP_FPS)
     if fps <= 0:
         fps = 30.0
 
@@ -132,7 +132,7 @@ def extract_pose_landmarks_to_csv(
                 if not success:
                     break
 
-                frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)  # pylint: disable=no-member
+                frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
                 mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=frame_rgb)
                 frame_timestamp_ms = int((frames_processed * 1000) / fps)
                 results = landmarker.detect_for_video(mp_image, frame_timestamp_ms)
