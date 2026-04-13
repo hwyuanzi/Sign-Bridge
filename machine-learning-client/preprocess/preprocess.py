@@ -71,7 +71,9 @@ def make_row(
     landmark_names: list[str],
 ) -> dict:
     """Build one long-format CSV row for a landmark."""
-    landmark_name = landmark_names[index] if index < len(landmark_names) else f"LANDMARK_{index}"
+    landmark_name = (
+        landmark_names[index] if index < len(landmark_names) else f"LANDMARK_{index}"
+    )
     return {
         "frame_idx": frame_idx,
         "timestamp_sec": timestamp_sec,
@@ -141,7 +143,13 @@ def extract_pose_landmarks_to_csv(
                     timestamp_sec = frames_processed / fps
                     for index, landmark in enumerate(results.pose_landmarks[0]):
                         writer.writerow(
-                            make_row(frames_processed, timestamp_sec, index, landmark, landmark_names)
+                            make_row(
+                                frames_processed,
+                                timestamp_sec,
+                                index,
+                                landmark,
+                                landmark_names,
+                            )
                         )
                         rows_written += 1
 
