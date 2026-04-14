@@ -7,7 +7,7 @@ from torch import nn
 
 from data import get_test_loader
 from model import Net
-from config import DEVICE, MODEL_PATH, CLASSES
+from src_config import DEVICE, MODEL_PATH, CLASSES
 
 
 def evaluate():

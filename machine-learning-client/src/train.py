@@ -8,7 +8,7 @@ from torch import optim
 
 from data import get_train_loader
 from model import Net
-from config import LR, EPOCH, MODEL_PATH, DEVICE, MOMENTUM
+from src_config import LR, EPOCH, MODEL_PATH, DEVICE, MOMENTUM
 
 
 def train():

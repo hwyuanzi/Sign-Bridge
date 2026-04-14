@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
-from config import BATCH_SIZE, DATA_ROOT, NUM_WORKERS
+from src_config import BATCH_SIZE, DATA_ROOT, NUM_WORKERS
 
 # Global transform configuration
 transform = transforms.Compose(

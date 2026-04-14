@@ -3,7 +3,7 @@ Execution entry point for training and evaluating the sign language model.
 """
 
 from train import train
-from val import eval as evaluate
+from val import evaluate
 
 
 def main():
