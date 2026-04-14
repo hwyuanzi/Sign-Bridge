@@ -1,16 +1,22 @@
 """Main web application for Ergonomics Monitor."""
 
 from flask import Flask
+from config import Config
+from routes.pages import pages_bp
+from routes.api import api_bp
 
-# pylint: disable=invalid-name
-app = Flask(__name__)
+
+def create_app() -> Flask:
+    app = Flask(__name__)
+    app.config.from_object(Config)
+
+    app.register_blueprint(pages_bp)
+    app.register_blueprint(api_bp, url_prefix="/api")
+
+    return app
 
 
-@app.route("/")
-def index():
-    """Return health check response."""
-    return {"status": "ok", "service": "web-app"}
-
+app = create_app()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=app.config["DEBUG"])
