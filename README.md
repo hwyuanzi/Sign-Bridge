@@ -42,9 +42,14 @@ touch machine-learning-client/data/raw/sample.mp4
 ```
 
 **3.5. Download datasets**
-Download and extract the dataset to machine-learning-client/src/data/
+Download and extract the skeleton dataset to machine-learning-client/data/raw/
 
-https://www.kaggle.com/datasets/datamunge/sign-language-mnist?resource=download
+https://github.com/shahroudy/NTURGB-D/blob/master/README.md
+
+Then, download the landmarker and put it in machine-learning-client/data/model/
+
+https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker
+
 
 Modify the config file accordingly
 
