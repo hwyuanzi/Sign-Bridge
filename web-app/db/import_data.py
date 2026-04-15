@@ -1,3 +1,5 @@
+"""Script for importing CSV data into MongoDB."""
+
 import os
 import pandas as pd
 from pymongo import MongoClient
@@ -15,6 +17,7 @@ client = MongoClient(MONGO_URI)
 db = client[DB_NAME]
 
 def import_csv(csv_path, collection_name):
+    """Import CSV data into MongoDB."""
     df = pd.read_csv(csv_path)
     records = df.to_dict(orient="records")
 
@@ -25,6 +28,7 @@ def import_csv(csv_path, collection_name):
     print(f"{collection_name}: inserted {len(records)} documents")
 
 def main():
+    """Import both train and test CSV files into MongoDB."""
     import_csv(TRAIN_CSV, "sign_mnist_train")
     import_csv(TEST_CSV, "sign_mnist_test")
 
