@@ -34,7 +34,7 @@ def get_latest_prediction():
 
 
 def get_recent_predictions(
-        limit: int = 10, search_query: str = "", sort_order: str = "desc"
+    limit: int = 10, search_query: str = "", sort_order: str = "desc"
 ):
     """Return a list of recent prediction documents, optionally filtered by predicted label."""
     collection = get_predictions_collection()
