@@ -8,6 +8,7 @@ from inference import load_model, predict
 from preprocessing import preprocess_frame
 from prediction_log import log_prediction
 
+
 def run(camera_index: int = 0, frame_step: int = 10, invert: bool = False):
     """Capture webcam frames, sample every 10 frame, and print predictions."""
 

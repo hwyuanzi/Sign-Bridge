@@ -17,10 +17,12 @@ transform = transforms.Compose(
     [transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))]
 )
 
+
 def get_db():
     client = MongoClient(os.getenv("MONGO_URI"))
     db = client[os.getenv("MONGO_DB_NAME", "sign_language_db")]
     return db
+
 
 class SignLanguageDataset(Dataset):
     """Custom Dataset for loading sign language images and labels from CSV."""
@@ -50,9 +52,7 @@ class SignLanguageDataset(Dataset):
 def get_train_loader():
     """Returns a DataLoader for the training dataset."""
     db = get_db()
-    trainset = SignLanguageDataset(
-        db["sign_mnist_train"], img_transform=transform
-    )
+    trainset = SignLanguageDataset(db["sign_mnist_train"], img_transform=transform)
     return DataLoader(
         trainset, batch_size=BATCH_SIZE, shuffle=True, num_workers=NUM_WORKERS
     )
@@ -61,9 +61,7 @@ def get_train_loader():
 def get_test_loader():
     """Returns a DataLoader for the test dataset."""
     db = get_db()
-    testset = SignLanguageDataset(
-        db["sign_mnist_test"], img_transform=transform
-    )
+    testset = SignLanguageDataset(db["sign_mnist_test"], img_transform=transform)
     return DataLoader(
         testset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS
     )

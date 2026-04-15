@@ -1,5 +1,6 @@
 from data import get_train_loader, get_test_loader
 
+
 def main():
     train_loader = get_train_loader()
     test_loader = get_test_loader()
@@ -22,6 +23,7 @@ def main():
     print("Single image shape:", image.shape)
     print("Single label:", label)
     print("Image min/max:", image.min().item(), image.max().item())
+
 
 if __name__ == "__main__":
     main()
