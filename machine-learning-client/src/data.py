@@ -1,6 +1,7 @@
 """
 Module for loading and preprocessing the Sign Language MNIST dataset.
 """
+
 import os
 import torch
 import pandas as pd
