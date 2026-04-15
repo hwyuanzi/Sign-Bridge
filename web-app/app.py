@@ -1,4 +1,4 @@
-"""Main web application for Ergonomics Monitor."""
+"""Application entry point for the Flask web app."""
 
 from flask import Flask
 from config import Config
@@ -7,13 +7,14 @@ from routes.api import api_bp
 
 
 def create_app() -> Flask:
-    app = Flask(__name__)
-    app.config.from_object(Config)
+    """Create and configure the Flask application."""
+    flask_app = Flask(__name__)
+    flask_app.config.from_object(Config)
 
-    app.register_blueprint(pages_bp)
-    app.register_blueprint(api_bp, url_prefix="/api")
+    flask_app.register_blueprint(pages_bp)
+    flask_app.register_blueprint(api_bp, url_prefix="/api")
 
-    return app
+    return flask_app
 
 
 app = create_app()

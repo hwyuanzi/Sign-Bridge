@@ -1,3 +1,5 @@
+"""Service functions for retrieving and formatting prediction data."""
+
 from collections import Counter
 from statistics import mean
 from typing import Any
@@ -5,6 +7,7 @@ from db.mongo import get_predictions_collection
 
 
 def _serialize_prediction(doc: dict[str, Any] | None) -> dict[str, Any] | None:
+    """Convert a MongoDB prediction document into a JSON-friendly dict."""
     if not doc:
         return None
 
@@ -24,18 +27,21 @@ def _serialize_prediction(doc: dict[str, Any] | None) -> dict[str, Any] | None:
 
 
 def get_latest_prediction():
+    """Return the most recent prediction document."""
     collection = get_predictions_collection()
     doc = collection.find_one(sort=[("timestamp", -1)])
     return _serialize_prediction(doc)
 
 
 def get_recent_predictions(limit: int = 10):
+    """Return a list of recent prediction documents."""
     collection = get_predictions_collection()
     docs = collection.find().sort("timestamp", -1).limit(limit)
     return [_serialize_prediction(doc) for doc in docs]
 
 
 def get_prediction_stats(limit: int = 100):
+    """Return aggregate statistics computed from recent predictions."""
     recent = get_recent_predictions(limit)
 
     if not recent:

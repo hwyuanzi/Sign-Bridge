@@ -1,7 +1,11 @@
+"""Configuration values for the Flask web app."""
+
 import os
 
 
-class Config:
+class Config:  # pylint: disable=too-few-public-methods
+    """Store configuration values loaded from environment variables."""
+
     SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
     DEBUG = os.getenv("FLASK_DEBUG", "true").lower() == "true"
 

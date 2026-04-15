@@ -1,1 +1,1 @@
-# db package
+"""Database package for the Flask web app."""
