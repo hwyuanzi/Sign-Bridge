@@ -48,7 +48,7 @@ def get_recent_predictions(limit: int = 10, search_query: str = "", sort_order: 
 
     sort_direction = 1 if sort_order == "asc" else -1
 
-    docs = collection.find(query).sort("timestamp", -1).limit(limit)
+    docs = collection.find(query).sort("timestamp", sort_direction).limit(limit)
     return [_serialize_prediction(doc) for doc in docs]
 
 
