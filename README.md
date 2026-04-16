@@ -15,6 +15,13 @@ This makes the project especially useful for two types of users:
 ## Product Overview
 SignBridge is containerized computer vision application designed to recognize and translate sign language gestures in real-time. The project uses a Machine Learning client (utilizing OpenCV and a Convolutional Neural Network trained on the Sign Language MNIST dataset) to detect American Sign Language (ASL) alphabet gestures from a video feed, and saves the classification results to a MongoDB database. A Flask web dashboard reads this database to show the translated gestures and confidence scores in real-time.
 
+## Dataset Source
+
+This project is based on the Sign Language MNIST dataset:
+[Dataset](https://www.kaggle.com/datasets/datamunge/sign-language-mnist?resource=download)
+
+The dataset is cited here as the source of the training data. Downloading it is not required to run the application.
+
 ## Team Members
 - [Hollan Yuan](https://github.com/hwyuanzi)
 - [Jonas Chen](https://github.com/JonasChenJusFox)
@@ -172,7 +179,7 @@ PYTHONPATH=src pipenv run python main.py
 cd web-app
 pipenv run python app.py
 ```
-Go to [http://localhost:5001](http://localhost:5001) in your browser to see the App.
+Go to [web](http://localhost:5001) in your browser to see the App.
 
 ### Testing ###
 
@@ -207,18 +214,11 @@ mkdir -p machine-learning-client/src/data/raw/
 # Place your trained weights file here (e.g., model.pth for PyTorch or model.h5 for Keras)
 # Path should look like: machine-learning-client/data/model/sign_language_model.pth
 ```
-Download the dataset from:
 
-https://www.kaggle.com/datasets/datamunge/sign-language-mnist?resource=download
-
-and place it in 
-
-machine-learning-client/src/data/raw/
 
 **3.5. Train the model**
 ```bash
 cd machine-learning-client\src
-
 python src_main.py
 ```
 
@@ -230,7 +230,7 @@ docker-compose up --build
 *(You can add `-d` at the end to run them in the background).*
 
 **5. View the app and logs**
-- **Web App:** Go to [http://localhost:5001](http://localhost:5001) in your browser to see the App.
+- **Web App:** Go to [web](http://localhost:5001) in your browser to see the App.
 >>>>>>> Stashed changes
 - **ML Client Logs:** To check if the machine learning client is running and processing the video, open a new terminal and run:
   ```bash
@@ -244,6 +244,7 @@ When you're done, stop the containers properly so your database data isn't lost:
 docker-compose down
 ```
 ```md
+
 ## Product User Stories
 
 ### User Type 1: People who rely on sign language support
@@ -271,6 +272,7 @@ docker-compose down
 8. As a learner, I want the project to show how sign language recognition works end-to-end so that I can better understand the relationship between image input, prediction, and displayed output.
 9. As a learner, I want a history view of recognized gestures so that I can identify repeated mistakes in my practice.
 10. As a learner, I want an accessible educational tool rather than just a model demo so that I can engage with sign language recognition in a more practical way.
+
 
 ## Development Workflow
 
